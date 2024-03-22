@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_in_path_for(resource) #view-page redirected after sign in/up
-    about_path #set path
+  def after_sign_in_path_for(resource)
+    post_images_path
   end
 
   def after_sign_out_path_for(resource) #view-page redirected after sign out
