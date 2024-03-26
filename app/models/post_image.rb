@@ -2,6 +2,7 @@ class PostImage < ApplicationRecord
 
   has_one_attached :image #association
   belongs_to :user
+  has_many :post_comments, dependent: :destroy
 
   def get_image #store ActiveStorage
     unless image.attached?
