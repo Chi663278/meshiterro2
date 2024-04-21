@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     post_images_path
   end
 
-  def after_sign_out_path_for(resource) #view-page redirected after sign out
+  def after_sign_out_path_for(resource) #view-page redirect after sign out
     about_path
   end
 
