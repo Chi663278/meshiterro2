@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :admin, skip: [:registrations, :password], controllers: {
+    sessions: 'admin/sessions' #admin/sessionsコントローラーをsessionsという名前で使用するように指定している
+  }
   root 'homes#top'
   devise_for :users
   get 'homes/about' => 'homes#about', as: 'about'
