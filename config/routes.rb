@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboards', to: 'dashboards#index' #管理者ダッシュボードへ  /admin/dashbordsにアクセスするとadmin/dashboards_controller.rbのindexアクションを処理
-    resources :users, only: [destroy] #顧客削除
+    resources :users, only: [:destroy] #顧客削除
   end
 
   scope module: :public do
