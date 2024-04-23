@@ -8,12 +8,15 @@ Rails.application.routes.draw do
     resources :users, only: [destroy] #顧客削除
   end
 
-  root 'homes#top'
-  devise_for :users
-  get 'homes/about' => 'homes#about', as: 'about'
-  resources :post_images, only: [:new, :create, :index, :show, :destroy] do
-    resource :favorite, only: [:create, :destroy]
-    resources :post_comments, only: [:create, :destroy]
+  scope module: :public do
+    devise_for :users
+    root to: 'homes#top'
+    get 'homes/about' => 'homes#about', as: 'about'
+    resources :post_images, only: [:new, :create, :index, :show, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
+    end
+    resources :users, only: [:show, :edit, :update]
   end
-  resources :users, only: [:show, :edit, :update]
+
 end
